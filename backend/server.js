@@ -34,8 +34,8 @@ app.get('/', (req,res) => {
     res.send({
         activeStatus:true,
         error:false,
-    })
-})
+    });
+});
 
 //Routes
 app.use("/api/auth", authRoutes);
