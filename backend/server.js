@@ -10,15 +10,17 @@ const userRoutes = require("./routes/userRoutes")
 const taskRoutes = require("./routes/taskRoutes")
 const reportRoutes = require("./routes/reportRoutes")
 const uploadRoutes = require("./routes/uploadRoutes");
+const { default: mongoose } = require("mongoose");
 
 
 const app = express();
 // Middleware to handle CORS
 app.use(cors(
     {
-        origin: process.env.CLIENT_URL || "*",
+        origin: ["https://Task-Managament-App-1whq.vercel.app"],
         methods: ["GET","POST","PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true
     })
 );
 //Connect Database
@@ -30,12 +32,10 @@ app.use(express.json());
 //serve uploaded images statically 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+mongoose.connect('mongodb+srv://samraarain:QaWuiXeMUmsNWMQI@taskmanager.qebjafe.mongodb.net/?retryWrites=true&w=majority&appName=taskManager')
 app.get('/', (req,res) => {
-    res.send({
-        activeStatus:true,
-        error:false,
+    res.json("Hello");
     });
-});
 
 //Routes
 app.use("/api/auth", authRoutes);
