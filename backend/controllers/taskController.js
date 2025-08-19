@@ -67,7 +67,7 @@ const getTaskById = async (req, res) => {
     try {
 const task = await Task.findById(req.params.id).populate(
     "assignedTo",
-    "name email proileImageUrl"
+    "name email profileImageUrl"
 );
 if (!task) return res.status(404).json({ message: "Task not found" });
 

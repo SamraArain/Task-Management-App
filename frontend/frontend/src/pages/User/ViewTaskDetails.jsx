@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import AvatarGroup from "../../components/AvatarGroup";
@@ -43,22 +43,25 @@ const ViewTaskDetails = () => {
     const taskId = id;
 
     if (todoChecklist && todoChecklist[index]) {
-      todoChecklist[index].completed = !todoChecklist[index].completed;
+      const todoId = todoChecklist[index]._id;
+      const newCompleted = !todoChecklist[index].completed;
+      todoChecklist[index].completed = newCompleted;
 
       try {
         const response = await axiosInstance.put(
           API_PATHS.TASKS.UPDATE_TODO_CHECKLIST(taskId, todoId), {
-            completed: true
+            completed: newCompleted
           });
 
         if (response.status === 200) {
           setTask(response.data?.task || task);
         } else {
           // Optionally revert the toggle if the API call fails.
-          todoChecklist[index].completed = !todoChecklist[index].completed;
+          todoChecklist[index].completed = !newCompleted;
         }
       } catch (error) {
-        todoChecklist[index].completed = !todoChecklist[index].completed;
+        todoChecklist[index].completed = !newCompleted;
+        console.error("Error updating todo:", error);
       }
     }
   };

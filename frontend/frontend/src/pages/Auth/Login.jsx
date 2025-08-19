@@ -4,7 +4,7 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
 import "../../index.css";
 import { Link } from "react-router-dom";
-import axiosInstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/UserContext";
 
@@ -37,6 +37,7 @@ const Login = () => {
       if (userData.token) {
         localStorage.setItem("token", userData.token);
         localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("role", response.data.role);
         updateUser(userData);
 
         const userRole = userData.role?.toLowerCase();

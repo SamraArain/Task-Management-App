@@ -40,7 +40,7 @@ const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            profileImageUrl,
+            profileImageUrl: req.body.profileImageUrl ||
             role,
         });
 

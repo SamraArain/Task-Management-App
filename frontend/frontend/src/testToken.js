@@ -1,4 +1,4 @@
-import axiosInstance from "./axiosinstance"; // your existing axios file
+import axiosInstance from "./axiosInstance"; // your existing axios file
 
 const testToken = async () => {
     const token = localStorage.getItem("token");

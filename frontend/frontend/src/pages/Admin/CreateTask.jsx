@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // ✅ added useEffect
 import { PRIORITY_DATA } from "../../utils/data";
-import axiosInstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from '../../utils/apiPaths';
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";

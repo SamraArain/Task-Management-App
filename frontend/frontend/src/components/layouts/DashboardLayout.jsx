@@ -6,7 +6,13 @@ import SideMenu from "./SideMenu";
 const DashboardLayout = ({children, activeMenu}) => {
     const { user } = useContext(UserContext);
 
-    if(!user) return null;
+    // if(loading) {
+    //   return <div className="p-6">Loading dashboard...</div>
+    // }
+
+    if (!user) {
+      return <div className="p-6">User not authenticated</div>;
+    }
 
   return (
    <div>

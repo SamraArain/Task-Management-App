@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import moment from "moment";
 import { addThousandsSeparator } from "../../utils/helper";
@@ -81,7 +81,7 @@ const Dashboard = () => {
       <div className="col-span-3">
         <h2 className="text-xl md:text-2xl">Good Morning! {user?.name}</h2>
         <p className="text-xs md:text-[13px] text-gray-400 mt-1.5">
-          {moment().format("dddd Do MM YYYYY")}
+          {moment().format("dddd Do MM YYYY")}
         </p>
       </div>
     </div>
@@ -156,7 +156,7 @@ const Dashboard = () => {
             </button>
           </div>
 
-          <TaskListTable tableData={dashboardData?.recentTasks || 0} />
+          <TaskListTable tableData={dashboardData?.recentTasks || []} />
         </div>
       </div>
     </div>

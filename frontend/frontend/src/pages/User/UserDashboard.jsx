@@ -3,7 +3,7 @@ import { useUserAuth } from "../../hooks/useUserAuth";
 import { UserContext } from "../../context/UserContext";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import moment from "moment";
 import { addThousandsSeparator } from "../../utils/helper";
@@ -28,6 +28,7 @@ const UserDashboard = () => {
   const getDashboardData = async () => {
     try {
       const response = await axiosInstance.get(API_PATHS.TASKS.GET_USER_DASHBOARD);
+      console.log("Dashboard API response:", response.data);
       if (response.data) {
         setDashboardData(response.data);
         prepareChartData(response.data?.charts || null);

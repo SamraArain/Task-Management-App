@@ -30,19 +30,19 @@ const App = () => {
       </Route>
 
       {/* Admin Routes */}
-      <Route element={<PrivateRoute allowedRoles={["admin"]}/>}>
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/tasks" element={<ManageTasks />} />
-        <Route path="/admin/create-task" element={<CreateTask />} />
-        <Route path="/admin/users" element={<ManageUsers />} />
-      </Route>
+       <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/tasks" element={<ManageTasks />} />
+            <Route path="/admin/create-task" element={<CreateTask />} />
+            <Route path="/admin/users" element={<ManageUsers />} />
+          </Route>
 
       {/* User Routes */}
-      <Route element={<PrivateRoute allowedRoles={["user"]} />}>
-        <Route path="/user/dashboard" element={<UserDashboard />} />
-        <Route path="/user/tasks" element={<MyTasks />} />
-        <Route path="/user/task-details/:id" element={<ViewTaskDetails />} />
-      </Route>
+      <Route element={<PrivateRoute allowedRoles={["member"]} />}>
+            <Route path="/user/dashboard" element={<UserDashboard />} />
+            <Route path="/user/tasks" element={<MyTasks />} />
+            <Route path="/user/task-details/:id" element={<ViewTaskDetails />} />
+          </Route>
 
       {/* Default Route */}
       <Route path="/" element={<Root />} />
@@ -74,5 +74,7 @@ const Root = () => {
     return <Navigate to="/login" />;
   }
 
-  return user.role === "admin" ? <Navigate to="/admindashboard" /> : <Navigate to="/user/dashboard" />;
+  return user.role === "admin"
+    ? <Navigate to="/admin/dashboard" />
+     : <Navigate to="/user/dashboard" />;
 };
