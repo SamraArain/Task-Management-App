@@ -1,10 +1,9 @@
 import axios from "axios";
 import { BASE_URL } from "./apiPaths";
 
-const BASE_URL = "http://localhost:8000";
 
 const axiosInstance = axios.create({
-    baseURL : import.meta.env.VITE_API_URL || BASE_URL ,
+    baseURL : BASE_URL,
 });
 
 // Function to check if token is expired
